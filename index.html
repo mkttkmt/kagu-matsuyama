@@ -314,6 +314,7 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   <form action="https://formspree.io/f/mwvyqdvk" method="POST">
   <input type="hidden" name="_next" value="https://kagu-matsuyama.com/thanks.html">
   <input type="hidden" name="_subject" value="【KAGU】サイトから新しい査定申し込みが届きました">
+  <input type="hidden" name="流入元" id="kagu-source">
   <div class="form-card">
     <p class="form-hint">【お断りする場合があるもの】<br>ノーブランドの一般家具 / 食器棚などの大型家具 / 著しく破損・汚損しているもの<br><br>複数まとめての査定も歓迎です。手放したい家具が他にもあれば、代表的なものを1点ご記入のうえ備考欄にお書き添えください。</p>
     <div class="form-group">
@@ -365,19 +366,6 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   </form>
 </div>
 
-<div class="logo-wrap logo-footer-wrap">
-  <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" class="logo-svg logo-footer">
-    <text x="200" y="70" text-anchor="middle" font-family="'Cormorant Garamond','Playfair Display',Georgia,serif"
-          font-size="48" font-weight="400" fill="#2C2C2A" letter-spacing="4">
-      KAGU<tspan fill="#854F0B">.</tspan>
-    </text>
-    <line x1="140" y1="90" x2="260" y2="90" stroke="#888780" stroke-width="0.5"/>
-    <text x="200" y="120" text-anchor="middle" font-family="'Cormorant Garamond','Playfair Display',Georgia,serif"
-          font-size="16" font-weight="300" fill="#5F5E5A" letter-spacing="8">
-      matsuyama
-    </text>
-  </svg>
-</div>
 <footer>
   © 2026 KAGU. matsuyama | 松山市 出張買取<br>
   古物商許可番号：821080001764
@@ -402,6 +390,62 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll,{passive:true});
   onScroll();
+})();
+</script>
+<script>
+/* 流入元トラッキング：問い合わせメールに「どこから来たお客様か」を自動記録する */
+(function () {
+  var KEY = 'kagu_source';
+  var MAXAGE = 30 * 24 * 60 * 60 * 1000; /* 30日間は初回の流入元を保持 */
+
+  function store(v) {
+    try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) {}
+  }
+  function load() {
+    try {
+      var d = JSON.parse(localStorage.getItem(KEY));
+      if (d && (Date.now() - d.t) < MAXAGE) return d.v;
+    } catch (e) {}
+    return null;
+  }
+  function detect() {
+    var p = new URLSearchParams(location.search);
+    if (p.get('gclid')) return 'Google広告 (gclid=' + p.get('gclid') + ')';
+    if (p.get('utm_source')) {
+      return 'UTM: ' + p.get('utm_source') + (p.get('utm_medium') ? ' / ' + p.get('utm_medium') : '');
+    }
+    var r = document.referrer;
+    if (!r) return '直接アクセス（ブックマーク・AIアプリ・SNSアプリ等）';
+    var h = '';
+    try { h = new URL(r).hostname; } catch (e) { return r; }
+    if (/chatgpt\.com|openai\.com/.test(h))              return 'ChatGPT';
+    if (/perplexity\.ai/.test(h))                        return 'Perplexity';
+    if (/gemini\.google\.com|bard\.google\.com/.test(h))  return 'Gemini';
+    if (/copilot\.microsoft\.com/.test(h))               return 'Copilot';
+    if (/claude\.ai/.test(h))                            return 'Claude';
+    if (/jmty\.jp/.test(h))                              return 'ジモティー';
+    if (/google\./.test(h))                              return 'Google検索・マップ（自然流入）';
+    if (/yahoo\./.test(h))                               return 'Yahoo!検索';
+    if (/bing\.com/.test(h))                             return 'Bing検索';
+    if (/instagram\.com/.test(h))                        return 'Instagram';
+    if (/x\.com|twitter\.com/.test(h))                   return 'X (Twitter)';
+    if (/facebook\.com/.test(h))                         return 'Facebook';
+    if (/line\.me/.test(h))                              return 'LINE';
+    if (/kagu-matsuyama\.com/.test(h))                   return null; /* サイト内遷移は無視 */
+    return h;
+  }
+
+  var current = detect();
+  var saved = load();
+  /* 広告クリックは最優先で上書き。それ以外は最初に来たときの流入元を保持 */
+  if (current && (current.indexOf('Google広告') === 0 || !saved)) {
+    store(current);
+    saved = current;
+  }
+  var field = document.getElementById('kagu-source');
+  if (field) {
+    field.value = (saved || '不明') + ' ／ 送信日時: ' + new Date().toLocaleString('ja-JP');
+  }
 })();
 </script>
 </body>
