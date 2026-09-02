@@ -35,6 +35,15 @@ body{font-family:"Noto Sans JP",sans-serif;background:var(--col-bg-page);color:v
 .back-link{display:inline-block;background:#1e3828;color:#f0ede6;font-size:14px;font-weight:500;letter-spacing:0.05em;padding:0.85rem 2rem;border-radius:8px;text-decoration:none}
 footer{text-align:center;padding:2rem;font-size:11px;line-height:2;background:var(--col-bg-hero);color:var(--col-text-sub);border-top:1px solid #c8dcc8}
 </style>
+  <!-- Google タグ（gtag.js）-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18418424474"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18418424474');
+  </script>
+
 </head>
 <body>
 
@@ -72,8 +81,14 @@ footer{text-align:center;padding:2rem;font-size:11px;line-height:2;background:va
 
 <footer>
   © 2026 KAGU. matsuyama | 松山市 出張買取<br>
-  古物商許可番号：821080001764
+  古物商許可番号：821080001764<br>
+  <a href="/privacy.html" style="color:inherit">プライバシーポリシー</a>
 </footer>
+
+<!-- コンバージョン計測：査定フォーム送信 -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-18418424474/mk6sCOPxuOwcEJq1y85E'});
+</script>
 
 </body>
 </html>
