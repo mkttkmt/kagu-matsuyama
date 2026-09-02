@@ -32,13 +32,12 @@ body{font-family:"Noto Sans JP",sans-serif;background:var(--col-bg-page);color:v
 .section-label{font-size:10px;letter-spacing:0.2em;color:var(--col-text-muted);margin-bottom:0.5rem;text-transform:uppercase}
 .section-title{font-family:"Noto Serif JP",serif;font-size:1.2rem;font-weight:600;margin-bottom:1.75rem;color:var(--col-text-main)}
 .divider{height:1px;background:#dde8dd;margin:0 2rem}
-.target-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:1.5rem}
+.target-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:1.5rem}
+.target-card.wide{grid-column:1 / -1;text-align:left;padding:1.25rem 1.25rem}
+.target-card.wide .target-card-title{margin-bottom:0.3rem}
 .target-card{background:var(--col-bg-card);border:1px solid #c8dcc8;border-radius:12px;padding:1.5rem 1rem;text-align:center}
 .target-card-title{font-size:13px;font-weight:500;margin-bottom:0.4rem;color:var(--col-text-main)}
 .target-card-desc{font-size:11px;color:var(--col-text-sub);line-height:1.7;text-align:left}
-.examples-label{font-size:11px;color:var(--col-text-sub)}
-.brand-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:0.75rem}
-.tag{font-size:11px;padding:5px 12px;border-radius:100px;border:1px solid #c8dcc8;color:var(--col-text-sub);background:var(--col-bg-card)}
 .gallery-section{background:var(--col-bg-gallery);padding:3rem 2rem;border-top:1px solid #c0d4c0;border-bottom:1px solid #c0d4c0}
 .gallery-title{font-family:"Noto Serif JP",serif;font-size:1.1rem;color:var(--col-text-main);margin-bottom:1.5rem;font-weight:600;text-align:center}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:700px;margin:0 auto}
@@ -66,14 +65,11 @@ body{font-family:"Noto Sans JP",sans-serif;background:var(--col-bg-page);color:v
 .form-label{font-size:13px;font-weight:500;margin-bottom:6px;display:block;color:var(--col-text-main)}
 .required{font-size:11px;color:#b84030;margin-left:4px}
 .form-note{font-size:11px;color:var(--col-text-sub);margin-top:5px}
-input[type=text],input[type=email],select,textarea{width:100%;font-family:inherit;font-size:14px;padding:10px 12px;border:1px solid #c8dcc8;border-radius:6px;color:var(--col-text-main);background:#fdfcf8}
-input[type=file]{width:100%;font-family:inherit;font-size:13px}
+.optional{font-size:11px;color:var(--col-text-muted);margin-left:4px}
+input[type=text],input[type=email],input[type=tel],select,textarea{width:100%;font-family:inherit;font-size:14px;padding:10px 12px;border:1px solid #c8dcc8;border-radius:6px;color:var(--col-text-main);background:#fdfcf8}
 textarea{resize:vertical}
 .form-hint{font-size:11px;color:var(--col-text-sub);background:#f0f6f0;padding:0.875rem;border-radius:8px;margin-bottom:1.5rem;line-height:1.8;border:1px solid #c8dcc8}
 .submit-btn{width:100%;background:var(--col-btn-bg);color:var(--col-btn-text);font-size:14px;font-weight:500;padding:1rem;border-radius:6px;cursor:pointer;border:none;font-family:inherit;letter-spacing:0.05em}
-.ng-box{background:#f0f6f0;border-radius:8px;padding:1rem 1.25rem;margin-top:1rem;border:1px solid #c8dcc8}
-.ng-title{font-size:12px;font-weight:500;color:var(--col-text-sub);margin-bottom:6px}
-.ng-box p{font-size:12px;color:var(--col-text-sub);line-height:1.9}
 footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;background:var(--col-bg-hero);color:var(--col-text-sub);border-top:1px solid #c8dcc8;margin-top:2rem}
 @media(max-width:480px){
   .target-grid,.trust-grid{grid-template-columns:1fr}
@@ -104,10 +100,14 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
 
 /* FAQ */
 .faq-list{display:flex;flex-direction:column;gap:0.75rem}
-.faq-item{background:var(--col-bg-card);border:1px solid #c8dcc8;border-radius:10px;padding:1rem 1.25rem}
-.faq-q{font-size:13px;font-weight:500;color:var(--col-text-main);margin-bottom:0.5rem;display:flex;gap:0.5rem}
+.faq-item{background:var(--col-bg-card);border:1px solid #c8dcc8;border-radius:10px;overflow:hidden}
+.faq-q{font-size:13px;font-weight:500;color:var(--col-text-main);display:flex;gap:0.5rem;align-items:flex-start;cursor:pointer;list-style:none;padding:1rem 2.25rem 1rem 1.25rem;position:relative}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:"";position:absolute;right:1.25rem;top:1.35rem;width:7px;height:7px;border-right:1.5px solid var(--col-text-muted);border-bottom:1.5px solid var(--col-text-muted);transform:rotate(45deg);transition:transform .2s}
+.faq-item[open] .faq-q::after{transform:rotate(-135deg);top:1.6rem}
+.faq-item[open] .faq-q{padding-bottom:0.5rem}
 .faq-q::before{content:"Q";color:var(--col-accent);font-family:"Noto Serif JP",serif;font-weight:600}
-.faq-a{font-size:12px;color:var(--col-text-sub);line-height:1.8;display:flex;gap:0.5rem}
+.faq-a{font-size:12px;color:var(--col-text-sub);line-height:1.8;display:flex;gap:0.5rem;padding:0 1.25rem 1rem}
 .faq-a::before{content:"A";color:var(--col-text-muted);font-family:"Noto Serif JP",serif;font-weight:600}
 </style>
   <!-- ファビコン・アイコン -->
@@ -115,24 +115,27 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- SEO メタタグ -->
-  <meta name="description" content="松山市でブランド家具・一枚板テーブル・洋風アンティーク家具を買取します。カリモク・マルニ・飛騨産業などのブランド家具を丁寧に査定。運べない家具も出張引き取り。">
-  <meta name="keywords" content="家具買取,松山,松山市,家具処分,出張買取,カリモク,マルニ,飛騨産業,アンティーク家具,一枚板テーブル,ブランド家具,愛媛">
+  <meta name="description" content="松山市でブランド家具・アンティーク家具を買取します。カリモク・浜本工芸・飛騨産業・マルニ木工・大塚家具・天童木工・Cassina など幅広く対応。一点ずつ丁寧に査定し、運べない家具も出張引き取りします。">
+  <meta name="keywords" content="家具買取,松山,松山市,出張買取,ブランド家具,アンティーク家具,アンティーク調,西洋家具,キャビネット,カリモク,浜本工芸,飛騨産業,マルニ木工,大塚家具,天童木工,愛媛">
   <meta name="author" content="KAGU. matsuyama">
   <meta name="robots" content="index, follow">
 
   <!-- OGP（SNSシェア用） -->
   <meta property="og:title" content="KAGU. matsuyama | 松山市 ブランド家具買取">
-  <meta property="og:description" content="大切な家具を、次の人へ届けます。ブランド家具・一枚板テーブル・洋風アンティーク家具を松山市で買取。運べない家具も出張引き取り。">
+  <meta property="og:description" content="大切な家具を、次の人へ届けます。ブランド家具・アンティーク家具を松山市で買取。運べない家具も出張引き取り。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kagu-matsuyama.com/">
-  <meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTIwMCA2MzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjZThmMGU4Ii8+CiAgPHRleHQgeD0iNjAwIiB5PSIyODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjEyMCIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzFlMzgyOCIgbGV0dGVyLXNwYWNpbmc9IjgiPktBR1U8dHNwYW4gZmlsbD0iIzg1NEYwQiI+LjwvdHNwYW4+PC90ZXh0PgogIDxsaW5lIHgxPSI0MjAiIHkxPSIzMzAiIHgyPSI3ODAiIHkyPSIzMzAiIHN0cm9rZT0iIzg4ODc4MCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iNjAwIiB5PSIzOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjQwIiBmb250LXdlaWdodD0iMzAwIiBmaWxsPSIjNDA1ODQ4IiBsZXR0ZXItc3BhY2luZz0iMTYiPm1hdHN1eWFtYTwvdGV4dD4KICA8dGV4dCB4PSI2MDAiIHk9IjQ4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiM1YTcwNjAiPuadvuWxseW4guWGhSDjg5bjg6njg7Pjg4nlrrblhbfosrflj5Y8L3RleHQ+Cjwvc3ZnPg==">
+  <meta property="og:image" content="https://kagu-matsuyama.com/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="KAGU. matsuyama">
   <meta property="og:locale" content="ja_JP">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="KAGU. matsuyama | 松山市 ブランド家具買取">
-  <meta name="twitter:description" content="大切な家具を、次の人へ届けます。ブランド家具・一枚板テーブル・洋風アンティーク家具を松山市で買取。">
+  <meta name="twitter:description" content="大切な家具を、次の人へ届けます。ブランド家具・アンティーク家具を松山市で買取。">
+  <meta name="twitter:image" content="https://kagu-matsuyama.com/ogp.png">
 
   <!-- スマホ表示最適化 -->
   <meta name="theme-color" content="#e8f0e8">
@@ -168,38 +171,31 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   <div class="target-grid">
     <div class="target-card">
       <svg style="display:block;margin:0 auto 0.875rem" width="56" height="56" viewBox="0 0 64 64" fill="none">
-        <rect x="8" y="20" width="48" height="22" rx="4" fill="#d8ecd8" stroke="#c8a870" stroke-width="1.5"/>
-        <rect x="12" y="24" width="40" height="14" rx="2" fill="#f0f6f0"/>
-        <rect x="10" y="42" width="6" height="12" rx="2" fill="#c8a870"/>
-        <rect x="48" y="42" width="6" height="12" rx="2" fill="#c8a870"/>
-        <rect x="14" y="14" width="36" height="8" rx="3" fill="#c0d8c0" stroke="#a8c0a8" stroke-width="1"/>
+        <rect x="8" y="20" width="48" height="22" rx="4" fill="#c8a870" stroke="#a88850" stroke-width="1.5"/>
+        <rect x="12" y="24" width="40" height="14" rx="2" fill="#e2c58c"/>
+        <rect x="10" y="42" width="6" height="12" rx="2" fill="#a88850"/>
+        <rect x="48" y="42" width="6" height="12" rx="2" fill="#a88850"/>
+        <rect x="14" y="14" width="36" height="8" rx="3" fill="#b89860" stroke="#a88850" stroke-width="1"/>
       </svg>
       <p class="target-card-title">ブランド家具</p>
-      <p class="target-card-desc">カリモク・マルニ・飛騨産業・浜本工芸やその他家具店で購入した品も歓迎</p>
+      <p class="target-card-desc">カリモク・浜本工芸・飛騨産業・マルニ木工など、家具店で購入された家具</p>
     </div>
     <div class="target-card">
       <svg style="display:block;margin:0 auto 0.875rem" width="56" height="56" viewBox="0 0 64 64" fill="none">
-        <ellipse cx="32" cy="26" rx="24" ry="10" fill="#c8a870" stroke="#a88850" stroke-width="1.5"/>
-        <rect x="8" y="26" width="48" height="6" fill="#b89860"/>
-        <rect x="14" y="32" width="4" height="18" rx="2" fill="#c8a870"/>
-        <rect x="46" y="32" width="4" height="18" rx="2" fill="#c8a870"/>
-        <ellipse cx="32" cy="26" rx="20" ry="7" fill="#d8b878" opacity="0.5"/>
+        <rect x="10" y="12" width="44" height="38" rx="3" fill="#c8a870" stroke="#a88850" stroke-width="1.5"/>
+        <rect x="10" y="12" width="44" height="8" rx="3" fill="#b89860"/>
+        <line x1="32" y1="20" x2="32" y2="50" stroke="#a88850" stroke-width="1"/>
+        <rect x="14" y="24" width="14" height="12" rx="2" fill="#e2c58c" stroke="#b89860" stroke-width="0.5"/>
+        <rect x="36" y="24" width="14" height="12" rx="2" fill="#e2c58c" stroke="#b89860" stroke-width="0.5"/>
+        <rect x="10" y="50" width="6" height="8" rx="2" fill="#a88850"/>
+        <rect x="48" y="50" width="6" height="8" rx="2" fill="#a88850"/>
       </svg>
-      <p class="target-card-title">一枚板テーブル</p>
-      <p class="target-card-desc">天然木の一枚板を使ったテーブル・座卓</p>
+      <p class="target-card-title">アンティーク家具</p>
+      <p class="target-card-desc">年代物のアンティーク家具やアンティーク調の西洋家具。ロココ調の猫足チェアなど</p>
     </div>
-    <div class="target-card">
-      <svg style="display:block;margin:0 auto 0.875rem" width="56" height="56" viewBox="0 0 64 64" fill="none">
-        <rect x="10" y="12" width="44" height="38" rx="3" fill="#d8ecd8" stroke="#c8a870" stroke-width="1.5"/>
-        <rect x="10" y="12" width="44" height="8" rx="3" fill="#c0d8c0"/>
-        <line x1="32" y1="20" x2="32" y2="50" stroke="#c8a870" stroke-width="1"/>
-        <rect x="14" y="24" width="14" height="12" rx="2" fill="#f0f6f0" stroke="#b8ccb8" stroke-width="0.5"/>
-        <rect x="36" y="24" width="14" height="12" rx="2" fill="#f0f6f0" stroke="#b8ccb8" stroke-width="0.5"/>
-        <rect x="10" y="50" width="6" height="8" rx="2" fill="#c8a870"/>
-        <rect x="48" y="50" width="6" height="8" rx="2" fill="#c8a870"/>
-      </svg>
-      <p class="target-card-title">洋風アンティーク家具</p>
-      <p class="target-card-desc">しっかりした作りの味わいある家具</p>
+    <div class="target-card wide">
+      <p class="target-card-title">その他の家具</p>
+      <p class="target-card-desc">小型の一枚板テーブル・座卓など。ブランドが分からなくても、装飾性のあるものやしっかりした作りの家具は高く評価できる場合があります</p>
     </div>
   </div>
 </div>
@@ -213,7 +209,7 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   <h2 class="section-title">価格感について正直にお伝えします</h2>
   <div class="price-box">
     <p>当方は個人で運営しているため余分なコストがかかっていません。<br>その分リサイクルショップよりは高めにお引き取りできます。<br>※他店で提示された金額があれば、可能な限りそれより高くお引き取りします。</p>
-    <p style="margin-top:0.875rem">ただし、お引き取り価格はご購入時の価格の1/10以下になるのが一般的とお考えください。<br>万が一、金額にご納得いただけない場合はご遠慮なくお断りいただいて構いません。</p>
+    <p style="margin-top:0.875rem">ただし、お引き取り価格はご購入時の価格の1/10〜1/20程度になるのが一般的とお考えください。<br>万が一、金額にご納得いただけない場合はご遠慮なくお断りいただいて構いません。</p>
   </div>
 </div>
 
@@ -255,30 +251,38 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   <p class="section-label">よくある質問</p>
   <h2 class="section-title">お問い合わせの前に</h2>
   <div class="faq-list">
-    <div class="faq-item">
-      <p class="faq-q">大きくて運べない家具でも引き取ってもらえますか？</p>
-      <p class="faq-a">はい。ご自宅まで出張し、こちらで搬出しますので、運べない大型の家具こそお気軽にご相談ください。</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">どのくらいの価格で買い取ってもらえますか？</p>
-      <p class="faq-a">ご購入時の価格の1/10以下になるのが一般的です。個人で運営しているため、リサイクルショップよりは高めにお引き取りできます。</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">査定に費用はかかりますか？</p>
-      <p class="faq-a">査定は無料です。ご自宅で実物を確認し、その場で金額をお伝えします。ご納得いただけない場合はお断りいただいて構いません。</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">対応エリアはどこですか？</p>
-      <p class="faq-a">松山市内を中心に出張買取を行っています。</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">申し込んでからどのくらいで来てもらえますか？</p>
-      <p class="faq-a">最短即日でご連絡し、ご都合に合わせて訪問日を調整します。お引越しなどでお急ぎの場合もご相談ください。</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">ブランドがわからない家具でも大丈夫ですか？</p>
-      <p class="faq-a">しっかりした作りの家具であれば、ブランドがわからなくてもご相談ください。購入元やおおよその情報をお知らせいただければ判断できます。</p>
-    </div>
+    <details class="faq-item">
+      <summary class="faq-q">大きくて運べない家具でも引き取ってもらえますか？</summary>
+        <p class="faq-a">はい。ご自宅まで出張し、こちらで搬出します。お気軽にご相談ください。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">どのくらいの価格で買い取ってもらえますか？</summary>
+        <p class="faq-a">ご購入時の価格の1/10〜1/20程度になるのが一般的です。個人で運営しているため、リサイクルショップよりは高めにお引き取りできます。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">査定に費用はかかりますか？</summary>
+        <p class="faq-a">査定は無料です。ご自宅で実物を確認し、その場で金額をお伝えします。ご納得いただけない場合はお断りいただいて構いません。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">対応エリアはどこですか？</summary>
+        <p class="faq-a">松山市内を中心に出張買取を行っています。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">申し込んでからどのくらいで来てもらえますか？</summary>
+        <p class="faq-a">最短即日でご連絡し、ご都合に合わせて訪問日を調整します。お引越しなどでお急ぎの場合もご相談ください。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">買取対象のブランドを教えてください。</summary>
+        <p class="faq-a">主に下記のブランドを買取しています。記載のないブランドや、ブランドが分からない家具もお気軽にご相談ください。<br>秋田木工・大川家具・大塚家具（IDC）・柏木工・カリモク・カンディハウス・シラカワ・松創・大雪木工・天童木工・日進木工・浜本工芸・飛騨産業（キツツキ）・広松木工・マルニ木工・Actus・B-COMPANY・IDÉE・unico・arflex・BoConcept・Calligaris・Cassina・Fritz Hansen・Herman Miller・Kartell</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">ブランドがわからない家具でも大丈夫ですか？</summary>
+        <p class="faq-a">しっかりした作りの家具であれば、ブランドがわからなくてもご相談ください。購入元やおおよその情報をお知らせいただければ判断できます。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">買い取れない家具はありますか？</summary>
+        <p class="faq-a">ノーブランドの一般家具、食器棚などの大型家具、著しく破損・汚損しているものはお断りする場合があります。判断に迷う場合もご相談ください。</p>
+    </details>
   </div>
 </div>
 
@@ -311,23 +315,19 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
 <div class="section" id="form">
   <p class="section-label">無料査定申し込み</p>
   <h2 class="section-title">まずは情報をお送りください</h2>
-  <form action="https://formspree.io/f/mwvyqdvk" method="POST">
+  <form id="kagu-form" action="https://formspree.io/f/mwvyqdvk" method="POST">
   <input type="hidden" name="_next" value="https://kagu-matsuyama.com/thanks.html">
   <input type="hidden" name="_subject" value="【KAGU】サイトから新しい査定申し込みが届きました">
   <input type="hidden" name="流入元" id="kagu-source">
   <div class="form-card">
-    <p class="form-hint">【お断りする場合があるもの】<br>ノーブランドの一般家具 / 食器棚などの大型家具 / 著しく破損・汚損しているもの<br><br>複数まとめての査定も歓迎です。手放したい家具が他にもあれば、代表的なものを1点ご記入のうえ備考欄にお書き添えください。</p>
+    <p class="form-hint">複数まとめての査定も歓迎です。代表的なものを1点ご記入のうえ備考欄にお書き添えください。</p>
     <div class="form-group">
       <label class="form-label">お名前<span class="required">必須</span></label>
-      <input type="text" name="name" placeholder="山田 太郎">
-    </div>
-    <div class="form-group">
-      <label class="form-label">メールアドレス<span class="required">必須</span></label>
-      <input type="email" name="email" placeholder="email@example.com">
+      <input type="text" name="name" placeholder="山田 太郎" required>
     </div>
     <div class="form-group">
       <label class="form-label">家具の種類<span class="required">必須</span></label>
-      <select name="furniture_type">
+      <select name="furniture_type" required>
         <option value="">選択してください</option>
         <option>ソファ</option>
         <option>椅子</option>
@@ -339,18 +339,18 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
       </select>
     </div>
     <div class="form-group">
-      <label class="form-label">ブランド名・購入元</label>
+      <label class="form-label">ブランド名・購入元<span class="optional">任意</span></label>
       <input type="text" name="brand" placeholder="例：カリモク、大塚家具など">
       <p class="form-note">分かればご記入ください</p>
     </div>
     <div class="form-group">
-      <label class="form-label">横幅</label>
+      <label class="form-label">横幅<span class="optional">任意</span></label>
       <input type="text" name="width" placeholder="例：180cm">
       <p class="form-note">おおよそでご記入ください</p>
     </div>
     <div class="form-group">
       <label class="form-label">状態<span class="required">必須</span></label>
-      <select name="condition">
+      <select name="condition" required>
         <option value="">選択してください</option>
         <option>良い（目立った傷・汚れなし）</option>
         <option>普通（多少の使用感あり）</option>
@@ -358,10 +358,20 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
       </select>
     </div>
     <div class="form-group">
-      <label class="form-label">備考・コメント</label>
+      <label class="form-label">メールアドレス<span class="required">必須</span></label>
+      <input type="email" name="email" placeholder="email@example.com" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">お電話番号<span class="optional">任意</span></label>
+      <input type="tel" name="tel" placeholder="090-1234-5678">
+      <p class="form-note">docomo・au・softbank などの携帯メールは迷惑メール設定により当方からの返信が届かない場合があります。メールが届かない場合のご連絡用です。こちらから営業のお電話をすることはありません。</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">備考・コメント<span class="optional">任意</span></label>
       <textarea name="notes" rows="3" placeholder="購入時期、付属品など、気になることがあればご記入ください"></textarea>
     </div>
     <button class="submit-btn" type="submit">査定を申し込む</button>
+    <p class="form-note" id="form-error" style="display:none;color:#b84030;margin-top:0.75rem"></p>
   </div>
   </form>
 </div>
@@ -446,6 +456,37 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   if (field) {
     field.value = (saved || '不明') + ' ／ 送信日時: ' + new Date().toLocaleString('ja-JP');
   }
+})();
+</script>
+<script>
+/* フォーム送信：Formspreeへ非同期で送り、完了後に thanks.html へ遷移する */
+(function () {
+  var form = document.getElementById('kagu-form');
+  if (!form) return;
+  var btn = form.querySelector('.submit-btn');
+  var err = document.getElementById('form-error');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '送信中…';
+    err.style.display = 'none';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      if (!res.ok) throw new Error('failed');
+      location.href = '/thanks.html';
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = label;
+      err.textContent = '送信できませんでした。通信環境をご確認のうえ、もう一度お試しください。';
+      err.style.display = 'block';
+    });
+  });
 })();
 </script>
 </body>
