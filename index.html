@@ -429,7 +429,13 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
 
   function detect() {
     var p = new URLSearchParams(location.search);
-    if (p.get('gclid')) return 'Google広告 (gclid=' + p.get('gclid') + ')';
+    /* 広告クリックの識別子。iOSでトラッキングが制限されていると gclid ではなく gbraid / wbraid が付く */
+    var adKeys = ['gclid', 'gbraid', 'wbraid'];
+    for (var i = 0; i < adKeys.length; i++) {
+      if (p.get(adKeys[i])) return 'Google広告 (' + adKeys[i] + '=' + p.get(adKeys[i]) + ')';
+    }
+    /* 識別子が落ちていても gad_source が残っていれば広告経由 */
+    if (p.get('gad_source') || p.get('gad_campaignid')) return 'Google広告 (gad_source)';
     if (p.get('utm_source')) {
       return 'UTM: ' + p.get('utm_source') + (p.get('utm_medium') ? ' / ' + p.get('utm_medium') : '');
     }
