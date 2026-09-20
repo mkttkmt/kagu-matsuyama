@@ -238,8 +238,8 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
     <div class="flow-item">
       <div class="flow-num-wrap"><span class="flow-num">02</span></div>
       <div>
-        <p class="flow-body-title">ご返信・お写真の確認</p>
-        <p class="flow-body-desc">最短即日でご連絡します。お写真を1枚お送りいただければ、お引き取りの可否とおおよその金額をお伝えし、訪問日を決めます。</p>
+        <p class="flow-body-title">ご返信・日程の調整</p>
+        <p class="flow-body-desc">最短即日でご連絡し、訪問日を決めます。訪問前におおよその金額を知りたい場合は、お写真を1枚お送りください。</p>
       </div>
     </div>
     <div class="flow-item">
@@ -290,7 +290,7 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   <input type="hidden" name="_subject" value="【KAGU】サイトから新しい査定申し込みが届きました">
   <input type="hidden" name="流入元" id="kagu-source">
   <div class="form-card">
-    <p class="form-hint">送信後のご返信で、家具のお写真を1枚お願いしています。お引き取りできるかを確認し、おおよその金額をお伝えするためです。<br>複数まとめての査定も歓迎です。代表的なものを1点ご記入のうえ備考欄にお書き添えください。</p>
+    <p class="form-hint">複数まとめての査定も歓迎です。代表的なものを1点ご記入のうえ備考欄にお書き添えください。</p>
     <div class="form-group">
       <label class="form-label">お名前<span class="required">必須</span></label>
       <input type="text" name="name" placeholder="山田 太郎" required>
@@ -309,6 +309,25 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
       </select>
     </div>
     <div class="form-group">
+      <label class="form-label">ブランド名・購入元<span class="optional">任意</span></label>
+      <input type="text" name="brand" placeholder="例：カリモク、unico、大塚家具">
+      <p class="form-note">分からなければ空欄で構いません。</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">横幅（cm）<span class="optional">任意</span></label>
+      <input type="text" name="width" inputmode="numeric" placeholder="例：180">
+      <p class="form-note">だいたいで構いません。</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">状態<span class="required">必須</span></label>
+      <select name="condition" required>
+        <option value="">選択してください</option>
+        <option>目立つ傷・汚れはない</option>
+        <option>小さな傷・汚れがある</option>
+        <option>目立つ傷・汚れ・破れがある</option>
+      </select>
+    </div>
+    <div class="form-group">
       <label class="form-label">メールアドレス<span class="required">必須</span></label>
       <input type="email" name="email" placeholder="email@example.com" required>
     </div>
@@ -319,7 +338,7 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
     </div>
     <div class="form-group">
       <label class="form-label">備考・コメント<span class="optional">任意</span></label>
-      <textarea name="notes" rows="3" placeholder="ブランド名または購入元、横幅、傷や汚れなど、分かる範囲でご記入ください"></textarea>
+      <textarea name="notes" rows="3" placeholder="複数ある場合はその内容など、ご自由にご記入ください"></textarea>
     </div>
     <button class="submit-btn" type="submit">査定を申し込む</button>
     <p class="form-note" id="form-error" style="display:none;color:#b84030;margin-top:0.75rem"></p>
