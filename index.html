@@ -60,6 +60,17 @@ body{font-family:"Noto Sans JP",sans-serif;background:var(--col-bg-page);color:v
 .flow-num{font-family:"Noto Serif JP",serif;font-size:13px;font-weight:600;color:var(--col-flow-num-text)}
 .flow-body-title{font-size:14px;font-weight:500;margin-bottom:5px;color:var(--col-text-main)}
 .flow-body-desc{font-size:12px;color:var(--col-text-sub);line-height:1.8}
+.about-wrap{display:flex;flex-direction:column;gap:1.5rem;align-items:center}
+.about-photo{flex-shrink:0}
+.about-photo img{width:180px;height:180px;object-fit:cover;border-radius:12px;display:block;border:1px solid #c8dcc8}
+.about-text{width:100%}
+.about-text p{font-size:13px;color:var(--col-text-sub);line-height:2.1;margin-bottom:1.1rem}
+.about-text p:last-of-type{margin-bottom:0}
+.about-sign{font-size:12px;color:var(--col-text-muted);margin-top:1.25rem;text-align:right}
+@media(min-width:600px){
+  .about-wrap{flex-direction:row;align-items:flex-start;gap:1.75rem}
+  .about-photo img{width:200px;height:200px}
+}
 .form-card{background:var(--col-bg-card);border:1px solid #c8dcc8;border-radius:12px;padding:1.75rem}
 .form-group{margin-bottom:1.25rem}
 .form-label{font-size:13px;font-weight:500;margin-bottom:6px;display:block;color:var(--col-text-main)}
@@ -116,7 +127,7 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
 
   <!-- SEO メタタグ -->
   <meta name="description" content="松山市でブランド家具・アンティーク家具を買取します。カリモク・浜本工芸・飛騨産業・マルニ木工・大塚家具・天童木工・Cassina など幅広く対応。一点ずつ丁寧に査定し、運べない家具も出張引き取りします。">
-  <meta name="keywords" content="家具買取,松山,松山市,出張買取,ブランド家具,アンティーク家具,アンティーク調,西洋家具,キャビネット,カリモク,浜本工芸,飛騨産業,マルニ木工,大塚家具,天童木工,愛媛">
+  <meta name="keywords" content="家具買取,松山,松山市,出張買取,ブランド家具,アンティーク家具,アンティーク調,西洋家具,キャビネット,カリモク,カリモク60,浜本工芸,飛騨産業,マルニ木工,大塚家具,天童木工,愛媛">
   <meta name="author" content="KAGU. matsuyama">
   <meta name="robots" content="index, follow">
 
@@ -254,7 +265,24 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
 
 <div class="divider"></div>
 
+<div class="section" id="about">
+  <p class="section-label">運営者について</p>
+  <h2 class="section-title">家具が好きで、この仕事をしています</h2>
+  <div class="about-wrap">
+    <div class="about-photo">
+      <img src="profile.jpg" alt="KAGU. matsuyama 竹本" width="200" height="200" loading="lazy">
+    </div>
+    <div class="about-text">
+      <p>高校生のころに雑誌で見たカリモク60へ一目惚れしました。<br>大人になってKチェア2シーターのモケットグリーンを手に入れたときは本当にうれしかったです。<br>今では自宅のリビングをカリモク60で揃えています。</p>
+      <p>この仕事を始めたきっかけは妹の手伝いでした。<br>妹が不用品回収の仕事をしており、手伝ううちに名前しか知らなかったブランドの家具を実際に手に取る機会に恵まれました。<br>写真で見るのと触れてみるのとではまるで違う。<br>もっといろいろな家具に触れてみたいと思うようになりました。</p>
+      <p>最初に扱ったのは数十年前のイタリア製のアンティークソファです。<br>閉業された医院のお孫さんから譲っていただいたもので今でも思い入れがあります。</p>
+      <p>引き取った家具は隅々まできれいにして、オイルで仕上げ、できるだけかっこよく写真を撮ります。<br>そうして次に大切に使ってくださる方の手に渡っていく。<br>それがこの仕事のいちばんの喜びです。</p>
+      <p class="about-sign">KAGU. matsuyama　竹本</p>
+    </div>
+  </div>
+</div>
 
+<div class="divider"></div>
 
 
 
@@ -354,7 +382,7 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
   <div class="faq-list">
     <details class="faq-item">
       <summary class="faq-q">大きくて運べない家具でも引き取ってもらえますか？</summary>
-        <p class="faq-a">はい。ご自宅まで出張し、こちらで搬出します。お気軽にご相談ください。</p>
+        <p class="faq-a">はい。ご自宅まで出張し、こちらで搬出します。他社で「大きいので」とお断りされた家具も、ブランド家具やしっかりした作りのものであればご相談ください。</p>
     </details>
     <details class="faq-item">
       <summary class="faq-q">どのくらいの価格で買い取ってもらえますか？</summary>
@@ -374,7 +402,7 @@ footer{text-align:center;padding:2.5rem 2rem;font-size:11px;line-height:2;backgr
     </details>
     <details class="faq-item">
       <summary class="faq-q">買取対象のブランドを教えてください。</summary>
-        <p class="faq-a">主に下記のブランドを買取しています。記載のないブランドや、ブランドが分からない家具もお気軽にご相談ください。<br>秋田木工・大川家具・大塚家具（IDC）・柏木工・カリモク・カンディハウス・シラカワ・松創・大雪木工・天童木工・日進木工・浜本工芸・飛騨産業（キツツキ）・広松木工・マルニ木工・Actus・B-COMPANY・IDÉE・unico・arflex・BoConcept・Calligaris・Cassina・Fritz Hansen・Herman Miller・Kartell</p>
+        <p class="faq-a">主に下記のブランドを買取しています。記載のないブランドや、ブランドが分からない家具もお気軽にご相談ください。<br>秋田木工・大川家具・大塚家具（IDC）・柏木工・カリモク・カリモク60・カンディハウス・シラカワ・松創・大雪木工・天童木工・日進木工・浜本工芸・飛騨産業（キツツキ）・広松木工・マルニ木工・Actus・B-COMPANY・IDÉE・unico・arflex・BoConcept・Calligaris・Cassina・Fritz Hansen・Herman Miller・Kartell</p>
     </details>
     <details class="faq-item">
       <summary class="faq-q">ブランドがわからない家具でも大丈夫ですか？</summary>
