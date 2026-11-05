@@ -154,6 +154,24 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
     function ctaClick(loc){
       try { if (window.gtag) gtag('event', 'cta_click', { cta_location: loc }); } catch (e) {}
     }
+
+    /* FAQ を開いたとき、どの質問かを計測する */
+    document.addEventListener('DOMContentLoaded', function(){
+      var items = document.querySelectorAll('#faq details');
+      for (var i = 0; i < items.length; i++) {
+        (function(d){
+          d.addEventListener('toggle', function(){
+            if (!d.open) return;
+            var q = d.querySelector('summary');
+            try {
+              if (window.gtag) gtag('event', 'faq_open', {
+                faq_title: q ? q.textContent.trim().slice(0, 100) : ''
+              });
+            } catch (e) {}
+          });
+        })(items[i]);
+      }
+    });
   </script>
 
 </head>
@@ -223,7 +241,7 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
   <p class="section-label">買取価格について</p>
   <h2 class="section-title">価格感について正直にお伝えします</h2>
   <div class="price-box">
-    <p>当方は個人で運営しているため余分なコストがかかっていません。<br>その分リサイクルショップよりは高めにお引き取りできます。<br>※他店で提示された金額があれば、可能な限りそれより高くお引き取りします。</p>
+    <p>他社様の見積もりが出ている場合は、その金額をお知らせください。<br>当方がお引き取りしたいと判断した家具であれば、その金額を上回るようお出しします。<br>個人で運営しているため余分なコストがかからず、その分を買取価格に回せます。</p>
     <p style="margin-top:0.875rem">ただし、中古家具の買取相場として、お引き取り価格はご購入時の価格の1/10〜1/20程度になるのが一般的とお考えください。<br>万が一、金額にご納得いただけない場合はご遠慮なくお断りいただいて構いません。</p>
   </div>
 </div>
@@ -285,6 +303,55 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
 
 
 
+
+<div class="section" id="faq">
+  <p class="section-label">よくある質問</p>
+  <h2 class="section-title">お問い合わせの前に</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary class="faq-q">大型の家具や、運べない家具でも引き取ってもらえますか？</summary>
+        <p class="faq-a">はい。ご自宅まで出張し、こちらで搬出します。他社で「大型だから」とお断りされた家具も、ブランド家具やしっかりした作りのものであればご相談ください。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">どのくらいの価格で買い取ってもらえますか？</summary>
+        <p class="faq-a">ご購入時の価格の1/10〜1/20程度になるのが一般的です。個人で運営しているため、リサイクルショップよりは高めにお引き取りできます。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">他社にも見積もりを依頼していますが、大丈夫ですか？</summary>
+        <p class="faq-a">まったく問題ありません。むしろ比較していただくことをおすすめします。他社様の見積もりが出ている場合は、その金額をお知らせください。当方がお引き取りしたいと判断した家具であれば、その金額を上回るようお出しします。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">査定に費用はかかりますか？</summary>
+        <p class="faq-a">査定は無料です。金額にご納得いただけない場合はお断りいただいて構いません。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">対応エリアはどこですか？</summary>
+        <p class="faq-a">松山市内を中心に出張買取を行っています。松山市周辺であってもご相談ください。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">申し込んでからどのくらいで来てもらえますか？</summary>
+        <p class="faq-a">最短即日でご連絡し、ご都合に合わせて訪問日を調整します。お引越しなどでお急ぎの場合もご相談ください。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">買取対象のブランドを教えてください。</summary>
+        <p class="faq-a">主に下記のブランドを買取しています。記載のないブランドや、ブランドが分からない家具もお気軽にご相談ください。<br>秋田木工・大川家具・大塚家具（IDC）・柏木工・カリモク・カリモク60・カンディハウス・シラカワ・松創・大雪木工・天童木工・日進木工・浜本工芸・飛騨産業（キツツキ）・広松木工・松本民芸家具・マルニ木工・Actus・B-COMPANY・IDÉE・unico・arflex・BoConcept・Calligaris・Cassina・Fritz Hansen・Herman Miller・Kartell</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">ブランドがわからない家具でも大丈夫ですか？</summary>
+        <p class="faq-a">しっかりした作りの家具であれば、ブランドがわからなくてもご相談ください。購入元やおおよその情報をお知らせいただければ判断できます。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">処分しようと思っていた家具でも、買取してもらえますか？</summary>
+        <p class="faq-a">捨てる前に一度ご相談ください。ご自身では価値が分からない家具でも、ブランドやしっかりした作りのものであれば、お引き取りできる場合があります。</p>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">買い取れない家具はありますか？</summary>
+        <p class="faq-a">ノーブランドの一般家具、食器棚などの大型家具、著しく破損・汚損しているものはお断りする場合があります。判断に迷う場合もご相談ください。</p>
+    </details>
+  </div>
+</div>
+
+<div class="divider"></div>
 
 <div class="section" id="form">
   <p class="section-label">無料査定申し込み</p>
@@ -348,51 +415,6 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
     <p class="form-note" id="form-error" style="display:none;color:#b84030;margin-top:0.75rem"></p>
   </div>
   </form>
-</div>
-
-<div class="divider"></div>
-
-<div class="section" id="faq">
-  <p class="section-label">よくある質問</p>
-  <h2 class="section-title">お問い合わせの前に</h2>
-  <div class="faq-list">
-    <details class="faq-item">
-      <summary class="faq-q">大型の家具や、運べない家具でも引き取ってもらえますか？</summary>
-        <p class="faq-a">はい。ご自宅まで出張し、こちらで搬出します。他社で「大型だから」とお断りされた家具も、ブランド家具やしっかりした作りのものであればご相談ください。</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">どのくらいの価格で買い取ってもらえますか？</summary>
-        <p class="faq-a">ご購入時の価格の1/10〜1/20程度になるのが一般的です。個人で運営しているため、リサイクルショップよりは高めにお引き取りできます。</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">査定に費用はかかりますか？</summary>
-        <p class="faq-a">査定は無料です。金額にご納得いただけない場合はお断りいただいて構いません。</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">対応エリアはどこですか？</summary>
-        <p class="faq-a">松山市内を中心に出張買取を行っています。松山市周辺であってもご相談ください。</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">申し込んでからどのくらいで来てもらえますか？</summary>
-        <p class="faq-a">最短即日でご連絡し、ご都合に合わせて訪問日を調整します。お引越しなどでお急ぎの場合もご相談ください。</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">買取対象のブランドを教えてください。</summary>
-        <p class="faq-a">主に下記のブランドを買取しています。記載のないブランドや、ブランドが分からない家具もお気軽にご相談ください。<br>秋田木工・大川家具・大塚家具（IDC）・柏木工・カリモク・カリモク60・カンディハウス・シラカワ・松創・大雪木工・天童木工・日進木工・浜本工芸・飛騨産業（キツツキ）・広松木工・松本民芸家具・マルニ木工・Actus・B-COMPANY・IDÉE・unico・arflex・BoConcept・Calligaris・Cassina・Fritz Hansen・Herman Miller・Kartell</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">ブランドがわからない家具でも大丈夫ですか？</summary>
-        <p class="faq-a">しっかりした作りの家具であれば、ブランドがわからなくてもご相談ください。購入元やおおよその情報をお知らせいただければ判断できます。</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">処分しようと思っていた家具でも、買取してもらえますか？</summary>
-        <p class="faq-a">捨てる前に一度ご相談ください。ご自身では価値が分からない家具でも、ブランドやしっかりした作りのものであれば、お引き取りできる場合があります。</p>
-    </details>
-    <details class="faq-item">
-      <summary class="faq-q">買い取れない家具はありますか？</summary>
-        <p class="faq-a">ノーブランドの一般家具、食器棚などの大型家具、著しく破損・汚損しているものはお断りする場合があります。判断に迷う場合もご相談ください。</p>
-    </details>
-  </div>
 </div>
 
 <footer>
