@@ -53,6 +53,8 @@ body{font-family:"Noto Sans JP",sans-serif;background:var(--col-bg-page);color:v
 .trust-num{font-family:"Noto Serif JP",serif;font-size:2.4rem;font-weight:600;color:var(--col-text-main);line-height:1}
 .trust-unit{font-size:12px;color:var(--col-text-sub);margin-top:6px}
 .trust-label{font-size:11px;color:var(--col-text-muted);margin-top:8px}
+.trust-single{text-align:center;padding:1.75rem 1.5rem}
+.trust-stars{font-size:1.1rem;color:#c8a870;letter-spacing:2px;margin-top:10px}
 .flow-list{display:flex;flex-direction:column}
 .flow-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid #dde8dd;align-items:flex-start}
 .flow-item:last-child{border-bottom:none}
@@ -430,17 +432,6 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
 
 
 
-<div class="section" id="price">
-  <p class="section-label">買取価格について</p>
-  <h2 class="section-title">価格感について正直にお伝えします</h2>
-  <div class="price-box">
-    <p>他社様の見積もりが出ている場合は、その金額をお知らせください。<br>当方がお引き取りしたいと判断した家具であれば、その金額を上回るようお出しします。<br>個人で運営しているため余分なコストがかからず、その分を買取価格に回せます。</p>
-    <p style="margin-top:0.875rem">ただし、中古家具の買取相場として、お引き取り価格はご購入時の価格の1/10〜1/20程度になるのが一般的とお考えください。<br>万が一、金額にご納得いただけない場合はご遠慮なくお断りいただいて構いません。</p>
-  </div>
-</div>
-
-<div class="divider"></div>
-
 <div class="section" id="flow">
   <p class="section-label">流れ</p>
   <h2 class="section-title">申し込みから買取まで</h2>
@@ -466,6 +457,17 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
         <p class="flow-body-desc">ご自宅へ出張。実物を確認して金額を確定し、その場で現金でお支払いのうえ、搬出まで行います。</p>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section" id="price">
+  <p class="section-label">買取価格について</p>
+  <h2 class="section-title">価格感について正直にお伝えします</h2>
+  <div class="price-box">
+    <p>他社様の見積もりが出ている場合は、その金額をお知らせください。<br>当方がお引き取りしたいと判断した家具であれば、その金額を上回るようお出しします。<br>個人で運営しているため余分なコストがかからず、その分を買取価格に回せます。</p>
+    <p style="margin-top:0.875rem">ただし、中古家具の買取相場として、お引き取り価格はご購入時の価格の1/10〜1/20程度になるのが一般的とお考えください。<br>万が一、金額にご納得いただけない場合はご遠慮なくお断りいただいて構いません。</p>
   </div>
 </div>
 
@@ -503,17 +505,11 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
       <figcaption>カリモク ／ コロニアル アームチェア</figcaption>
     </figure>
   </div>
-  <div class="trust-grid">
-    <div class="trust-card">
-      <p class="trust-num">200<span style="font-size:1.1rem">+</span></p>
-      <p class="trust-unit">件の取引実績</p>
-      <p class="trust-label">メルカリにて</p>
-    </div>
-    <div class="trust-card">
-      <p class="trust-num" style="font-size:1.5rem;padding-top:0.3rem">★★★★★</p>
-      <p class="trust-unit">高評価多数</p>
-      <p class="trust-label">購入者からの声</p>
-    </div>
+  <div class="trust-card trust-single">
+    <p class="trust-num">200<span style="font-size:1.1rem">+</span></p>
+    <p class="trust-unit">件の取引実績</p>
+    <p class="trust-stars">★★★★★</p>
+    <p class="trust-label">購入者からの高評価多数</p>
   </div>
   <p style="font-size:12px;color:var(--col-text-muted);margin-top:0.875rem">買取した家具は徹底的に清掃し、状態・サイズを正確に記載して出品しています。</p>
 </div>
