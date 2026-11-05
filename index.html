@@ -71,6 +71,15 @@ textarea{resize:vertical}
 .form-hint{font-size:11px;color:var(--col-text-sub);background:#f0f6f0;padding:0.875rem;border-radius:8px;margin-bottom:1.5rem;line-height:1.8;border:1px solid #c8dcc8}
 .submit-btn{width:100%;background:var(--col-btn-bg);color:var(--col-btn-text);font-size:14px;font-weight:500;padding:1rem;border-radius:6px;cursor:pointer;border:none;font-family:inherit;letter-spacing:0.05em}
 footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;line-height:2;background:var(--col-bg-hero);color:var(--col-text-sub);border-top:1px solid #c8dcc8;margin-top:2rem}
+/* 実績の写真（お引き取りした家具） */
+.works-lead{font-size:12px;color:var(--col-text-sub);line-height:1.9;margin-bottom:1.25rem}
+.works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:1.5rem}
+.works-item{margin:0}
+.works-item img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block;background:#e4e0d8;border:1px solid #c8dcc8}
+.works-item figcaption{font-size:11px;color:var(--col-text-muted);margin-top:6px;line-height:1.6}
+@media(min-width:600px){
+  .works-grid{grid-template-columns:repeat(3,1fr);gap:12px}
+}
 @media(max-width:480px){
   .target-grid,.trust-grid{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
@@ -466,7 +475,34 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
 
 <div class="section" id="works">
   <p class="section-label">実績</p>
-  <h2 class="section-title">メルカリで次の方へ届けています</h2>
+  <h2 class="section-title">お引き取りした家具</h2>
+  <p class="works-lead">引き取った家具は隅々まで清掃し、オイルで仕上げてから、次に使ってくださる方へお届けしています。</p>
+  <div class="works-grid">
+    <figure class="works-item">
+      <img src="works-01-sofa-zona.jpg" alt="AD CORE のレザーソファ ZONA。黒の本革とチーク材の組み合わせ" width="560" height="560" loading="lazy" decoding="async">
+      <figcaption>AD CORE ／ レザーソファ ZONA</figcaption>
+    </figure>
+    <figure class="works-item">
+      <img src="works-02-antique-sofa.jpg" alt="ロココ調の猫足ソファ。彫刻のある木枠と花柄の張地のアンティーク家具" width="560" height="560" loading="lazy" decoding="async">
+      <figcaption>アンティーク ／ ロココ調 猫足ソファ</figcaption>
+    </figure>
+    <figure class="works-item">
+      <img src="works-03-chair-split.jpg" alt="カンディハウスのダイニングチェア SPLIT。無垢材と黒レザーの座面" width="560" height="560" loading="lazy" decoding="async">
+      <figcaption>CONDE HOUSE ／ ダイニングチェア SPLIT</figcaption>
+    </figure>
+    <figure class="works-item">
+      <img src="works-04-colonial-table.jpg" alt="カリモクのコロニアルシリーズ 丸テーブル。濃茶の天板と四方に広がる脚" width="560" height="560" loading="lazy" decoding="async">
+      <figcaption>カリモク ／ コロニアル 丸テーブル</figcaption>
+    </figure>
+    <figure class="works-item">
+      <img src="works-05-tvboard-espoir.jpg" alt="カンディハウスのテレビボード エスポワ。ナラ材の格子扉が並ぶ横長のローボード" width="560" height="560" loading="lazy" decoding="async">
+      <figcaption>CONDE HOUSE ／ テレビボード エスポワ</figcaption>
+    </figure>
+    <figure class="works-item">
+      <img src="works-06-colonial-armchair.jpg" alt="カリモクのコロニアルシリーズ アームチェア。曲木のフレームと花柄の張地" width="560" height="560" loading="lazy" decoding="async">
+      <figcaption>カリモク ／ コロニアル アームチェア</figcaption>
+    </figure>
+  </div>
   <div class="trust-grid">
     <div class="trust-card">
       <p class="trust-num">200<span style="font-size:1.1rem">+</span></p>
@@ -480,7 +516,6 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
     </div>
   </div>
   <p style="font-size:12px;color:var(--col-text-muted);margin-top:0.875rem">買取した家具は徹底的に清掃し、状態・サイズを正確に記載して出品しています。</p>
-  <div style="text-align:center;margin-top:1.25rem"><a class="gallery-link" href="https://jp.mercari.com/user/profile/133879134" target="_blank">メルカリの出品ページを見る →</a></div>
 </div>
 
 <div class="divider"></div>
