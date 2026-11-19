@@ -334,6 +334,35 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
       try { if (window.gtag) gtag('event', 'cta_click', { cta_location: loc }); } catch (e) {}
     }
 
+    /* 各セクションが画面に入ったとき、1回だけ到達を記録する */
+    document.addEventListener('DOMContentLoaded', function(){
+      if (!('IntersectionObserver' in window)) return;
+      var names = {
+        hero:'01_ヒーロー', target:'02_買取対象', flow:'03_流れ', price:'04_買取価格',
+        works:'05_実績', faq:'06_FAQ', form:'07_フォーム'
+      };
+      var seen = {};
+      var io = new IntersectionObserver(function(entries){
+        for (var i = 0; i < entries.length; i++) {
+          var e = entries[i];
+          if (!e.isIntersecting) continue;
+          var id = e.target.id || 'hero';
+          if (seen[id]) { io.unobserve(e.target); continue; }
+          seen[id] = 1;
+          io.unobserve(e.target);
+          try {
+            if (window.gtag) gtag('event', 'section_view', { section_name: names[id] || id });
+          } catch (err) {}
+        }
+      }, { threshold: 0.25 });
+      var hero = document.querySelector('.hero');
+      if (hero) io.observe(hero);
+      for (var k in names) {
+        var el = document.getElementById(k);
+        if (el) io.observe(el);
+      }
+    });
+
     /* FAQ を開いたとき、どの質問かを計測する */
     document.addEventListener('DOMContentLoaded', function(){
       var items = document.querySelectorAll('#faq details');
@@ -374,7 +403,7 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
   <p class="hero-eyebrow">松山市 出張買取</p>
   <h1 class="hero-title">その家具の価値を、<br><em>正しく査定します。</em></h1>
   <p class="hero-sub">お引き取りした家具は、一点ずつ手入れをして、<br>次に使ってくださる方へお届けしています。</p>
-  <button class="cta-btn" onclick="ctaClick('hero');document.getElementById('form').scrollIntoView({behavior:'smooth'})">無料査定を申し込む</button>
+  <button class="cta-btn" onclick="ctaClick('hero');document.getElementById('form').scrollIntoView({behavior:'smooth'})">まずは無料で相談する</button>
 </div>
 
 <div class="section" id="target">
@@ -545,8 +574,8 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
 <div class="divider"></div>
 
 <div class="section" id="form">
-  <p class="section-label">無料査定申し込み</p>
-  <h2 class="section-title">まずは情報をお送りください</h2>
+  <p class="section-label">無料相談・査定</p>
+  <h2 class="section-title">まずは、お気軽にご相談ください</h2>
   <form id="kagu-form" action="https://formspree.io/f/mwvyqdvk" method="POST">
   <input type="hidden" name="_next" value="https://kagu-matsuyama.com/thanks.html">
   <input type="hidden" name="_subject" value="【KAGU】サイトから新しい査定申し込みが届きました">
@@ -602,7 +631,7 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
       <label class="form-label">備考・コメント<span class="optional">任意</span></label>
       <textarea name="notes" rows="3" placeholder="複数ある場合はその内容など、ご自由にご記入ください"></textarea>
     </div>
-    <button class="submit-btn" type="submit">査定を申し込む</button>
+    <button class="submit-btn" type="submit">この内容で相談する</button>
     <p class="form-note" id="form-error" style="display:none;color:#b84030;margin-top:0.75rem"></p>
   </div>
   </form>
@@ -616,7 +645,7 @@ footer{text-align:center;padding:2.5rem 2rem calc(2.5rem + 80px);font-size:11px;
 
 
 <div class="sticky-cta" id="stickyCta">
-  <a href="#form" onclick="ctaClick('sticky');document.getElementById('form').scrollIntoView({behavior:'smooth'});return false;">無料査定を申し込む</a>
+  <a href="#form" onclick="ctaClick('sticky');document.getElementById('form').scrollIntoView({behavior:'smooth'});return false;">無料で相談する</a>
 </div>
 <script>
 (function(){
